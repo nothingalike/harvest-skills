@@ -4,7 +4,7 @@ How `harvest-timesheet` learns where a user keeps their daily updates. Read this
 
 ## The file
 
-`~/.cache/harvest/timesheet.md` is plain Markdown with two sections. Sources say, in plain words, where a day's work can be found and how to read it; `{date}` stands for the work date as `YYYY-MM-DD`. Mappings are labels the user has already tied to a Harvest project and task.
+`~/.cache/harvest/timesheet.md` is plain Markdown. Sources say, in plain words, where a day's work can be found and how to read it; `{date}` stands for the work date as `YYYY-MM-DD`. Mappings are labels the user has already tied to a Harvest project and task. Preferences is optional and holds settings like when the workday starts.
 
 ```markdown
 # Timesheet config
@@ -16,7 +16,12 @@ How `harvest-timesheet` learns where a user keeps their daily updates. Read this
 ## Mappings
 - `acme-shop` → Acme: Website Rebuild / Development
 - Story IDs starting `BILL-` → Billing Co: API Support / Development
+
+## Preferences
+- Workday starts at 9:00am local.
 ```
+
+A workday-start line in Preferences (`Workday starts at 9:00am local`) lets the skill size a run before the end of the day: the hours to account for so far are the current local time minus the start. With no line, the skill defaults to 9:00am.
 
 A source can be anything the agent can read:
 
